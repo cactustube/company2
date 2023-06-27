@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="modal fade" id="myVideo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <button type="button" class="close" onclick="if (!window.__cfRLUnblockHandlers) return false; stopVideo()" data-bs-dismiss="modal" data-cf-modified-8acecfd493cfa004da5a4035->&times;</button>
+                <div class="modal-body">
+                    <div class="video">
+                        <iframe src="https://www.youtube.com/embed/BxFU3uP7SIs?rel=0&autoplay=1" class="videoPlayer" srcdoc="<style>*{display:block;padding:0;margin:0;overflow:hidden}html,body{height:100%}img,span{position:absolute;width:100%;top:-1px;bottom:0;margin:auto}span{height:1.5em;text-align:center;font:48px/1.5 sans-serif;color:white;text-shadow:0 0 0.2em black}</style><a href='https://www.youtube.com/embed/BxFU3uP7SIs?rel=0&autoplay=1'><img src='https://img.youtube.com/vi/BxFU3uP7SIs/sddefault.jpg' alt='Corpbiz' loading='lazy'><span>▶</span></a>"
+                            allow="autoplay fullscreen" allowfullscreen title="Corpbiz" loading="lazy"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="border-wrap  mt-5">
+        <div class="container">
+            <div class="social-links-footer">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <ul class="list-inline footer-social-links">
+                            <li class="list-inline-item"> <a href="/" title="Facebook" target="_blank"><i class="fab fa-facebook"></i></a> </li>
+                            <li class="list-inline-item"> <a href="/" title="twitter" target="_blank"><i class="fab fa-twitter"></i></a> </li>
+                            <li class="list-inline-item"> <a href="/" title="Instagram" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                            <li class="list-inline-item"> <a href="/" title="Linkedin" target="_blank"><i class="fab fa-linkedin"></i></a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <ul class="list-inline ms-auto more-links text-dark">
+                            <li class="list-inline-item"><a href="/about-us">About us</a> </li>
+                            <li class="list-inline-item"><a href="/customer-payment">Pay Now</a> </li>
+                            <li class="list-inline-item"><a href="https://corpbiz.io/learning/" target="_blank">Learning</a> </li>
+                            <li class="list-inline-item"><a href="/privacy-policy">Privacy Policy</a></li>
+                            <li class="list-inline-item"><a href="/refund-policy">Refund Policy</a> </li>
+                            <li class="list-inline-item"><a href="/terms-condition">Terms & Conditions</a></li>
+
+                            <li class="list-inline-item"><a href="/contact-us">Contact us</a> </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        3D Card
+        <div class="glow" />
+      </div>
+      <style>
+        * {
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+body {
+  font-family: system-ui, sans-serif;
+  perspective: 1500px;
+  background: linear-gradient(white, #efefef);
+}
+
+.card {
+  font-weight: bold;
+  padding: 1em;
+  text-align: right;
+  color: #181a1a;
+  
+  width:  300px;
+  height: 400px;
+  box-shadow: 0 1px 5px #00000099;
+  
+  border-radius: 10px;
+  background-image: url(https://images.unsplash.com/photo-1557672199-6e8c8b2b8fff?ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80);
+  background-size: cover;
+  
+  position: relative;
+  
+  transition-duration: 300ms;
+  transition-property: transform, box-shadow;
+  transition-timing-function: ease-out;
+  transform: rotate3d(0);
+}
+
+.card:hover {
+  transition-duration: 150ms;
+  box-shadow: 0 5px 20px 5px #00000044;
+}
+
+.card .glow {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  
+  background-image: radial-gradient(circle at 50% -20%, #ffffff22, #0000000f);
+}
+      </style>
+      <script>
+        const $card = document.querySelector('.card');
+let bounds;
+
+function rotateToMouse(e) {
+  const mouseX = e.clientX;
+  const mouseY = e.clientY;
+  const leftX = mouseX - bounds.x;
+  const topY = mouseY - bounds.y;
+  const center = {
+    x: leftX - bounds.width / 2,
+    y: topY - bounds.height / 2
+  }
+  const distance = Math.sqrt(center.x**2 + center.y**2);
+  
+  $card.style.transform = `
+    scale3d(1.07, 1.07, 1.07)
+    rotate3d(
+      ${center.y / 100},
+      ${-center.x / 100},
+      0,
+      ${Math.log(distance)* 2}deg
+    )
+  `;
+  
+  $card.querySelector('.glow').style.backgroundImage = `
+    radial-gradient(
+      circle at
+      ${center.x * 2 + bounds.width/2}px
+      ${center.y * 2 + bounds.height/2}px,
+      #ffffff55,
+      #0000000f
+    )
+  `;
+}
+
+$card.addEventListener('mouseenter', () => {
+  bounds = $card.getBoundingClientRect();
+  document.addEventListener('mousemove', rotateToMouse);
+});
+
+$card.addEventListener('mouseleave', () => {
+  document.removeEventListener('mousemove', rotateToMouse);
+  $card.style.transform = '';
+  $card.style.background = '';
+});
+      </script>
+     <!-- <section id="our-services">
+        <div class="container-fluid">
+            <div class="row justify-content-center">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-10">
+                    <div class="customer-count-content text-center">
+                        <h2>Our Services</h2>
+                        <p class="mt-65">cor focuses predominantly on assisting entrepreneurs or SMEs by providing services such as Business Registration, Government Registration, Regulatory Measures, Tax Filing, IPR, and much more.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 mt-36">
+                    <div class="left-tab-panel">
+                        <div class="for-scroll">
+                            <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                                <button class="nav-link active" id="business-regisration-tab" data-bs-toggle="pill" data-bs-target="#business-regisration" type="button" role="tab" aria-controls="business-regisration" aria-selected="true">
+<div> <span>
+<svg width="22" height="25" viewbox="0 0 22 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M4.63158 24.4219H1.15789C0.850802 24.4219 0.556287 24.2888 0.339139 24.0519C0.121992 23.815 0 23.4937 0 23.1587V13.0535C0 12.7184 0.121992 12.3972 0.339139 12.1603C0.556287 11.9234 0.850802 11.7903 1.15789 11.7903H4.63158C4.93867 11.7903 5.23319 11.9234 5.45033 12.1603C5.66748 12.3972 5.78947 12.7184 5.78947 13.0535V23.1587C5.78947 23.4937 5.66748 23.815 5.45033 24.0519C5.23319 24.2888 4.93867 24.4219 4.63158 24.4219ZM12.7368 24.4219H9.26316C8.95607 24.4219 8.66155 24.2888 8.4444 24.0519C8.22726 23.815 8.10526 23.4937 8.10526 23.1587V1.68503C8.10526 1.35002 8.22726 1.02873 8.4444 0.791845C8.66155 0.554957 8.95607 0.421875 9.26316 0.421875H12.7368C13.0439 0.421875 13.3384 0.554957 13.5556 0.791845C13.7727 1.02873 13.8947 1.35002 13.8947 1.68503V23.1587C13.8947 23.4937 13.7727 23.815 13.5556 24.0519C13.3384 24.2888 13.0439 24.4219 12.7368 24.4219ZM20.8421 24.4219H17.3684C17.0613 24.4219 16.7668 24.2888 16.5497 24.0519C16.3325 23.815 16.2105 23.4937 16.2105 23.1587V9.26398C16.2105 8.92897 16.3325 8.60768 16.5497 8.37079C16.7668 8.1339 17.0613 8.00082 17.3684 8.00082H20.8421C21.1492 8.00082 21.4437 8.1339 21.6609 8.37079C21.878 8.60768 22 8.92897 22 9.26398V23.1587C22 23.4937 21.878 23.815 21.6609 24.0519C21.4437 24.2888 21.1492 24.4219 20.8421 24.4219Z" fill="white" />
+</svg>
+</span> <span>
+<h4>Business Registration</h4>
+<p>We also help you market your products</p>
+</span> </div>
+</button>
+                                <button class="nav-link" id="gov-reg-tab" data-bs-toggle="pill" data-bs-target="#gov-reg" type="button" role="tab" aria-controls="gov-reg" aria-selected="false">
+<div> <span>
+<svg width="22" height="25" viewbox="0 0 22 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M4.63158 24.4219H1.15789C0.850802 24.4219 0.556287 24.2888 0.339139 24.0519C0.121992 23.815 0 23.4937 0 23.1587V13.0535C0 12.7184 0.121992 12.3972 0.339139 12.1603C0.556287 11.9234 0.850802 11.7903 1.15789 11.7903H4.63158C4.93867 11.7903 5.23319 11.9234 5.45033 12.1603C5.66748 12.3972 5.78947 12.7184 5.78947 13.0535V23.1587C5.78947 23.4937 5.66748 23.815 5.45033 24.0519C5.23319 24.2888 4.93867 24.4219 4.63158 24.4219ZM12.7368 24.4219H9.26316C8.95607 24.4219 8.66155 24.2888 8.4444 24.0519C8.22726 23.815 8.10526 23.4937 8.10526 23.1587V1.68503C8.10526 1.35002 8.22726 1.02873 8.4444 0.791845C8.66155 0.554957 8.95607 0.421875 9.26316 0.421875H12.7368C13.0439 0.421875 13.3384 0.554957 13.5556 0.791845C13.7727 1.02873 13.8947 1.35002 13.8947 1.68503V23.1587C13.8947 23.4937 13.7727 23.815 13.5556 24.0519C13.3384 24.2888 13.0439 24.4219 12.7368 24.4219ZM20.8421 24.4219H17.3684C17.0613 24.4219 16.7668 24.2888 16.5497 24.0519C16.3325 23.815 16.2105 23.4937 16.2105 23.1587V9.26398C16.2105 8.92897 16.3325 8.60768 16.5497 8.37079C16.7668 8.1339 17.0613 8.00082 17.3684 8.00082H20.8421C21.1492 8.00082 21.4437 8.1339 21.6609 8.37079C21.878 8.60768 22 8.92897 22 9.26398V23.1587C22 23.4937 21.878 23.815 21.6609 24.0519C21.4437 24.2888 21.1492 24.4219 20.8421 24.4219Z" fill="white" />
+</svg>
+</span> <span>
+<h4>Government Registration</h4>
+<p>We also help you market your products</p>
+</span> </div>
+</button>
+                                <button class="nav-link" id="fssai-license-tab" data-bs-toggle="pill" data-bs-target="#fssai-license" type="button" role="tab" aria-controls="fssai-license" aria-selected="false">
+<div> <span>
+<svg width="22" height="25" viewbox="0 0 22 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M4.63158 24.4219H1.15789C0.850802 24.4219 0.556287 24.2888 0.339139 24.0519C0.121992 23.815 0 23.4937 0 23.1587V13.0535C0 12.7184 0.121992 12.3972 0.339139 12.1603C0.556287 11.9234 0.850802 11.7903 1.15789 11.7903H4.63158C4.93867 11.7903 5.23319 11.9234 5.45033 12.1603C5.66748 12.3972 5.78947 12.7184 5.78947 13.0535V23.1587C5.78947 23.4937 5.66748 23.815 5.45033 24.0519C5.23319 24.2888 4.93867 24.4219 4.63158 24.4219ZM12.7368 24.4219H9.26316C8.95607 24.4219 8.66155 24.2888 8.4444 24.0519C8.22726 23.815 8.10526 23.4937 8.10526 23.1587V1.68503C8.10526 1.35002 8.22726 1.02873 8.4444 0.791845C8.66155 0.554957 8.95607 0.421875 9.26316 0.421875H12.7368C13.0439 0.421875 13.3384 0.554957 13.5556 0.791845C13.7727 1.02873 13.8947 1.35002 13.8947 1.68503V23.1587C13.8947 23.4937 13.7727 23.815 13.5556 24.0519C13.3384 24.2888 13.0439 24.4219 12.7368 24.4219ZM20.8421 24.4219H17.3684C17.0613 24.4219 16.7668 24.2888 16.5497 24.0519C16.3325 23.815 16.2105 23.4937 16.2105 23.1587V9.26398C16.2105 8.92897 16.3325 8.60768 16.5497 8.37079C16.7668 8.1339 17.0613 8.00082 17.3684 8.00082H20.8421C21.1492 8.00082 21.4437 8.1339 21.6609 8.37079C21.878 8.60768 22 8.92897 22 9.26398V23.1587C22 23.4937 21.878 23.815 21.6609 24.0519C21.4437 24.2888 21.1492 24.4219 20.8421 24.4219Z" fill="white" />
+</svg>
+</span> <span>
+<h4>Government Licenses</h4>
+<p>We also help you market your products</p>
+</span> </div>
+</button>
+                                <button class="nav-link" id="rbi-regulatory-tab" data-bs-toggle="pill" data-bs-target="#rbi-regulatory" type="button" role="tab" aria-controls="rbi-regulatory" aria-selected="false">
+<div> <span>
+<svg width="22" height="25" viewbox="0 0 22 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M4.63158 24.4219H1.15789C0.850802 24.4219 0.556287 24.2888 0.339139 24.0519C0.121992 23.815 0 23.4937 0 23.1587V13.0535C0 12.7184 0.121992 12.3972 0.339139 12.1603C0.556287 11.9234 0.850802 11.7903 1.15789 11.7903H4.63158C4.93867 11.7903 5.23319 11.9234 5.45033 12.1603C5.66748 12.3972 5.78947 12.7184 5.78947 13.0535V23.1587C5.78947 23.4937 5.66748 23.815 5.45033 24.0519C5.23319 24.2888 4.93867 24.4219 4.63158 24.4219ZM12.7368 24.4219H9.26316C8.95607 24.4219 8.66155 24.2888 8.4444 24.0519C8.22726 23.815 8.10526 23.4937 8.10526 23.1587V1.68503C8.10526 1.35002 8.22726 1.02873 8.4444 0.791845C8.66155 0.554957 8.95607 0.421875 9.26316 0.421875H12.7368C13.0439 0.421875 13.3384 0.554957 13.5556 0.791845C13.7727 1.02873 13.8947 1.35002 13.8947 1.68503V23.1587C13.8947 23.4937 13.7727 23.815 13.5556 24.0519C13.3384 24.2888 13.0439 24.4219 12.7368 24.4219ZM20.8421 24.4219H17.3684C17.0613 24.4219 16.7668 24.2888 16.5497 24.0519C16.3325 23.815 16.2105 23.4937 16.2105 23.1587V9.26398C16.2105 8.92897 16.3325 8.60768 16.5497 8.37079C16.7668 8.1339 17.0613 8.00082 17.3684 8.00082H20.8421C21.1492 8.00082 21.4437 8.1339 21.6609 8.37079C21.878 8.60768 22 8.92897 22 9.26398V23.1587C22 23.4937 21.878 23.815 21.6609 24.0519C21.4437 24.2888 21.1492 24.4219 20.8421 24.4219Z" fill="white" />
+</svg>
+</span> <span>
+<h4>RBI Regulatory</h4>
+<p>We also help you market your products</p>
+</span> </div>
+</button>
+                                <button class="nav-link" id="environment-laws-tab" data-bs-toggle="pill" data-bs-target="#environment-laws" type="button" role="tab" aria-controls="environment-laws" aria-selected="false">
+<div> <span>
+<svg width="22" height="25" viewbox="0 0 22 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M4.63158 24.4219H1.15789C0.850802 24.4219 0.556287 24.2888 0.339139 24.0519C0.121992 23.815 0 23.4937 0 23.1587V13.0535C0 12.7184 0.121992 12.3972 0.339139 12.1603C0.556287 11.9234 0.850802 11.7903 1.15789 11.7903H4.63158C4.93867 11.7903 5.23319 11.9234 5.45033 12.1603C5.66748 12.3972 5.78947 12.7184 5.78947 13.0535V23.1587C5.78947 23.4937 5.66748 23.815 5.45033 24.0519C5.23319 24.2888 4.93867 24.4219 4.63158 24.4219ZM12.7368 24.4219H9.26316C8.95607 24.4219 8.66155 24.2888 8.4444 24.0519C8.22726 23.815 8.10526 23.4937 8.10526 23.1587V1.68503C8.10526 1.35002 8.22726 1.02873 8.4444 0.791845C8.66155 0.554957 8.95607 0.421875 9.26316 0.421875H12.7368C13.0439 0.421875 13.3384 0.554957 13.5556 0.791845C13.7727 1.02873 13.8947 1.35002 13.8947 1.68503V23.1587C13.8947 23.4937 13.7727 23.815 13.5556 24.0519C13.3384 24.2888 13.0439 24.4219 12.7368 24.4219ZM20.8421 24.4219H17.3684C17.0613 24.4219 16.7668 24.2888 16.5497 24.0519C16.3325 23.815 16.2105 23.4937 16.2105 23.1587V9.26398C16.2105 8.92897 16.3325 8.60768 16.5497 8.37079C16.7668 8.1339 17.0613 8.00082 17.3684 8.00082H20.8421C21.1492 8.00082 21.4437 8.1339 21.6609 8.37079C21.878 8.60768 22 8.92897 22 9.26398V23.1587C22 23.4937 21.878 23.815 21.6609 24.0519C21.4437 24.2888 21.1492 24.4219 20.8421 24.4219Z" fill="white" />
+</svg>
+</span> <span>
+<h4>Environment Laws</h4>
+<p>We also help you market your products</p>
+</span> </div>
+</button>
+                                <button class="nav-link" id="tax-filings-tab" data-bs-toggle="pill" data-bs-target="#tax-filings" type="button" role="tab" aria-controls="tax-filings" aria-selected="false">
+<div> <span>
+<svg width="22" height="25" viewbox="0 0 22 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M4.63158 24.4219H1.15789C0.850802 24.4219 0.556287 24.2888 0.339139 24.0519C0.121992 23.815 0 23.4937 0 23.1587V13.0535C0 12.7184 0.121992 12.3972 0.339139 12.1603C0.556287 11.9234 0.850802 11.7903 1.15789 11.7903H4.63158C4.93867 11.7903 5.23319 11.9234 5.45033 12.1603C5.66748 12.3972 5.78947 12.7184 5.78947 13.0535V23.1587C5.78947 23.4937 5.66748 23.815 5.45033 24.0519C5.23319 24.2888 4.93867 24.4219 4.63158 24.4219ZM12.7368 24.4219H9.26316C8.95607 24.4219 8.66155 24.2888 8.4444 24.0519C8.22726 23.815 8.10526 23.4937 8.10526 23.1587V1.68503C8.10526 1.35002 8.22726 1.02873 8.4444 0.791845C8.66155 0.554957 8.95607 0.421875 9.26316 0.421875H12.7368C13.0439 0.421875 13.3384 0.554957 13.5556 0.791845C13.7727 1.02873 13.8947 1.35002 13.8947 1.68503V23.1587C13.8947 23.4937 13.7727 23.815 13.5556 24.0519C13.3384 24.2888 13.0439 24.4219 12.7368 24.4219ZM20.8421 24.4219H17.3684C17.0613 24.4219 16.7668 24.2888 16.5497 24.0519C16.3325 23.815 16.2105 23.4937 16.2105 23.1587V9.26398C16.2105 8.92897 16.3325 8.60768 16.5497 8.37079C16.7668 8.1339 17.0613 8.00082 17.3684 8.00082H20.8421C21.1492 8.00082 21.4437 8.1339 21.6609 8.37079C21.878 8.60768 22 8.92897 22 9.26398V23.1587C22 23.4937 21.878 23.815 21.6609 24.0519C21.4437 24.2888 21.1492 24.4219 20.8421 24.4219Z" fill="white" />
+</svg>
+</span> <span>
+<h4>Tax Filing</h4>
+<p>We also help you market your products</p>
+</span> </div>
+</button>
+                                <button class="nav-link" id="trademarks-tab" data-bs-toggle="pill" data-bs-target="#trademarks" type="button" role="tab" aria-controls="trademarks" aria-selected="false">
+<div> <span>
+<svg width="22" height="25" viewbox="0 0 22 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M4.63158 24.4219H1.15789C0.850802 24.4219 0.556287 24.2888 0.339139 24.0519C0.121992 23.815 0 23.4937 0 23.1587V13.0535C0 12.7184 0.121992 12.3972 0.339139 12.1603C0.556287 11.9234 0.850802 11.7903 1.15789 11.7903H4.63158C4.93867 11.7903 5.23319 11.9234 5.45033 12.1603C5.66748 12.3972 5.78947 12.7184 5.78947 13.0535V23.1587C5.78947 23.4937 5.66748 23.815 5.45033 24.0519C5.23319 24.2888 4.93867 24.4219 4.63158 24.4219ZM12.7368 24.4219H9.26316C8.95607 24.4219 8.66155 24.2888 8.4444 24.0519C8.22726 23.815 8.10526 23.4937 8.10526 23.1587V1.68503C8.10526 1.35002 8.22726 1.02873 8.4444 0.791845C8.66155 0.554957 8.95607 0.421875 9.26316 0.421875H12.7368C13.0439 0.421875 13.3384 0.554957 13.5556 0.791845C13.7727 1.02873 13.8947 1.35002 13.8947 1.68503V23.1587C13.8947 23.4937 13.7727 23.815 13.5556 24.0519C13.3384 24.2888 13.0439 24.4219 12.7368 24.4219ZM20.8421 24.4219H17.3684C17.0613 24.4219 16.7668 24.2888 16.5497 24.0519C16.3325 23.815 16.2105 23.4937 16.2105 23.1587V9.26398C16.2105 8.92897 16.3325 8.60768 16.5497 8.37079C16.7668 8.1339 17.0613 8.00082 17.3684 8.00082H20.8421C21.1492 8.00082 21.4437 8.1339 21.6609 8.37079C21.878 8.60768 22 8.92897 22 9.26398V23.1587C22 23.4937 21.878 23.815 21.6609 24.0519C21.4437 24.2888 21.1492 24.4219 20.8421 24.4219Z" fill="white" />
+</svg>
+</span> <span>
+<h4>IPR & NGO</h4>
+<p>We also help you market your products</p>
+</span> </div>
+</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8">
+                    <div class="tab-content" id="v-pills-tabContent">
+                        <div class="tab-pane fade show active" id="business-regisration" role="tabpanel" aria-labelledby="business-regisration-tab">
+                            <div class="inner-tab-panel">
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 mt-36">
+                                        <div class="about-service">
+                                            <div class="d-flex align-items-center">
+                                                <div class="position-relative border-after"> <img src="/img/esi-icon.png" alt="Private Limited Company Registration"> </div>
+                                                <h3 class="ms-4">Private Limited Company Registration</h3>
+                                            </div>
+                                            <div class="service-content">
+                                                <p>A Private Limited Company is a privately maintained small business existence, which is one of the highly recommended means to start a busine..</p>
+                                            </div>
+                                            <a href="/company-registration" class="go-to-service"><img src="/img/right-arrow.png" alt="Private Limited Company Registration"></a> </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 mt-36">
+                                        <div class="about-service">
+                                            <div class="d-flex align-items-center">
+                                                <div class="position-relative border-after"> <img src="/img/esi-icon.png" alt="Sole Proprietorship Registration"> </div>
+                                                <h3 class="ms-4">Sole Proprietorship Registration</h3>
+                                            </div>
+                                            <div class="service-content">
+                                                <p>A sole proprietorship is a convenient and simplified way to commence a business in India. In a sole proprietorship business there is no lega..</p>
+                                            </div>
+                                            <a href="/sole-proprietorship-registration" class="go-to-service"><img src="/img/right-arrow.png" alt="Sole Proprietorship Registration"></a> </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 mt-36">
+                                        <div class="about-service">
+                                            <div class="d-flex align-items-center">
+                                                <div class="position-relative border-after"> <img src="/img/esi-icon.png" alt="Producer Company Registration"> </div>
+                                                <h3 class="ms-4">Producer Company Registration</h3>
+                                            </div>
+                                            <div class="service-content">
+                                                <p>In 2002, the government of India introduced the producer company concept to Indian economy to deal with the then problems of the farmers. Th..</p>
+                                            </div>
+                                            <a href="/producer-company-registration" class="go-to-service"><img src="/img/right-arrow.png" alt="Producer Company Registration"></a> </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 mt-36">
+                                        <div class="about-service">
+                                            <div class="d-flex align-items-center">
+                                                <div class="position-relative border-after"> <img src="/img/esi-icon.png" alt="Public Limited Company Registration"> </div>
+                                                <h3 class="ms-4">Public Limited Company Registration</h3>
+                                            </div>
+                                            <div class="service-content">
+                                                <p>Incorporating a Public Company will provide you security &amp; enjoys far more credibility than other business forms. Count on cor, and..</p>
+                                            </div>
+                                            <a href="/public-limited-company-registration" class="go-to-service"><img src="/img/right-arrow.png" alt="Public Limited Company Registration"></a> </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="gov-reg" role="tabpanel" aria-labelledby="gov-reg-tab">
+                            <div class="inner-tab-panel">
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 mt-36">
+                                        <div class="about-service">
+                                            <div class="d-flex align-items-center">
+                                                <div class="position-relative border-after"> <img src="/img/esi-icon.png" alt="FIEO Registration"> </div>
+                                                <h3 class="ms-4">FIEO Registration</h3>
+                                            </div>
+                                            <div class="service-content">
+                                                <p>FIEO stands for Federation of Indian Export Organization. The purpose of the Organization is to promote international trade and is responsib..</p>
+                                            </div>
+                                            <a href="/fieo-registration" class="go-to-service"><img src="/img/right-arrow.png" alt="FIEO Registration"></a> </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 mt-36">
+                                        <div class="about-service">
+                                            <div class="d-flex align-items-center">
+                                                <div class="position-relative border-after"> <img src="/img/esi-icon.png" alt="BOCW Act Registration"> </div>
+                                                <h3 class="ms-4">BOCW Act Registration</h3>
+                                            </div>
+                                            <div class="service-content">
+                                                <p>To resolve the issues of unskilled labourers who work in intensive pitiful conditions, the Government of India has introduced The Building a..</p>
+                                            </div>
+                                            <a href="/bocw-act-registration" class="go-to-service"><img src="/img/right-arrow.png" alt="BOCW Act Registration"></a> </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 mt-36">
+                                        <div class="about-service">
+                                            <div class="d-flex align-items-center">
+                                                <div class="position-relative border-after"> <img src="/img/esi-icon.png" alt="Halal Certification"> </div>
+                                                <h3 class="ms-4">Halal Certification</h3>
+                                            </div>
+                                            <div class="service-content">
+                                                <p>Want to get Halal Certification for your business? Contact cor NOW!</p>
+                                            </div>
+                                            <a href="/halal-certification" class="go-to-service"><img src="/img/right-arrow.png" alt="Halal Certification"></a> </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 mt-36">
+                                        <div class="about-service">
+                                            <div class="d-flex align-items-center">
+                                                <div class="position-relative border-after"> <img src="/img/esi-icon.png" alt="IEC Registration"> </div>
+                                                <h3 class="ms-4">IEC Registration</h3>
+                                            </div>
+                                            <div class="service-content">
+                                                <p>IEC Registration is required to be obtained by anyone willing to start an import/export business in India. IEC is a 10-digit code issued by..</p>
+                                            </div>
+                                            <a href="/iec-registration" class="go-to-service"><img src="/img/right-arrow.png" alt="IEC Registration"></a> </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="fssai-license" role="tabpanel" aria-labelledby="fssai-license-tab">
+                            <div class="inner-tab-panel">
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 mt-36">
+                                        <div class="about-service">
+                                            <div class="d-flex align-items-center">
+                                                <div class="position-relative border-after"> <img src="/img/esi-icon.png" alt="PSARA License"> </div>
+                                                <h3 class="ms-4">PSARA License</h3>
+                                            </div>
+                                            <div class="service-content">
+                                                <p>Private security business is thriving rapidly. Connect with cor to know the legalities.</p>
+                                            </div>
+                                            <a href="/psara-license" class="go-to-service"><img src="/img/right-arrow.png" alt="PSARA License"></a> </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 mt-36">
+                                        <div class="about-service">
+                                            <div class="d-flex align-items-center">
+                                                <div class="position-relative border-after"> <img src="/img/esi-icon.png" alt="FDA Certification"> </div>
+                                                <h3 class="ms-4">FDA Certification</h3>
+                                            </div>
+                                            <div class="service-content">
+                                                <p>FDA issues Form 483 for FDA Certification of the products after the inspection by officials of the FDA. As per FDA guidelines, the food and..</p>
+                                            </div>
+                                            <a href="/fda-certification" class="go-to-service"><img src="/img/right-arrow.png" alt="FDA Certification"></a> </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 mt-36">
+                                        <div class="about-service">
+                                            <div class="d-flex align-items-center">
+                                                <div class="position-relative border-after"> <img src="/img/esi-icon.png" alt="MSO License"> </div>
+                                                <h3 class="ms-4">MSO License</h3>
+                                            </div>
+                                            <div class="service-content">
+                                                <p>At cor, we ensure that none of our clients seeking the MSO license come across process complexities and complicated paperwork by renderi..</p>
+                                            </div>
+                                            <a href="/mso-license" class="go-to-service"><img src="/img/right-arrow.png" alt="MSO License"></a> </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 mt-36">
+                                        <div class="about-service">
+                                            <div class="d-flex align-items-center">
+                                                <div class="position-relative border-after"> <img src="/img/esi-icon.png" alt="WPC Certification"> </div>
+                                                <h3 class="ms-4">WPC Certification</h3>
+                                            </div>
+                                            <div class="service-content">
+                                                <p>WPC means Wireless planning and coordination. The certification for WPC is required for the process of any form of radio-frequency enable de..</p>
+                                            </div>
+                                            <a href="/wpc-certification" class="go-to-service"><img src="/img/right-arrow.png" alt="WPC Certification"></a> </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="rbi-regulatory" role="tabpanel" aria-labelledby="rbi-regulatory-tab">
+                            <div class="inner-tab-panel">
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 mt-36">
+                                        <div class="about-service">
+                                            <div class="d-flex align-items-center">
+                                                <div class="position-relative border-after"> <img src="/img/esi-icon.png" alt="NBFC Account Aggregator License"> </div>
+                                                <h3 class="ms-4">NBFC Account Aggregator License</h3>
+                                            </div>
+                                            <div class="service-content">
+                                                <p>Before going to the NBFC Account Aggregator permit, it's critical to comprehend the expression &quot;Account Aggregator&quot;. Account Aggre..</p>
+                                            </div>
+                                            <a href="/nbfc-account-aggregator-license" class="go-to-service"><img src="/img/right-arrow.png" alt="NBFC Account Aggregator License"></a> </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 mt-36">
+                                        <div class="about-service">
+                                            <div class="d-flex align-items-center">
+                                                <div class="position-relative border-after"> <img src="/img/esi-icon.png" alt="Payment Bank License"> </div>
+                                                <h3 class="ms-4">Payment Bank License</h3>
+                                            </div>
+                                            <div class="service-content">
+                                                <p>The concept of Payment Bank is introduced by the Reserve Bank of India (RBI). The maximum deposit amount to these banks is currently limited..</p>
+                                            </div>
+                                            <a href="/payment-bank-license" class="go-to-service"><img src="/img/right-arrow.png" alt="Payment Bank License"></a> </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 mt-36">
+                                        <div class="about-service">
+                                            <div class="d-flex align-items-center">
+                                                <div class="position-relative border-after"> <img src="/img/esi-icon.png" alt="Peer to Peer Lending License"> </div>
+                                                <h3 class="ms-4">Peer to Peer Lending License</h3>
+                                            </div>
+                                            <div class="service-content">
+                                                <p>Peer to Peer (P2P) is essentially an online platform which works with the motive of raising loans which are to be repaid with intrigue. The..</p>
+                                            </div>
+                                            <a href="/peer-to-peer-lending-license" class="go-to-service"><img src="/img/right-arrow.png" alt="Peer to Peer Lending License"></a> </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 mt-36">
+                                        <div class="about-service">
+                                            <div class="d-flex align-items-center">
+                                                <div class="position-relative border-after"> <img src="/img/esi-icon.png" alt="FFMC License"> </div>
+                                                <h3 class="ms-4">FFMC License</h3>
+                                            </div>
+                                            <div class="service-content">
+                                                <p>FFMCs business is to widen access to foreign exchange facilities to residents and tourists while ensuring efficient customer service through..</p>
+                                            </div>
+                                            <a href="/ffmc-license" class="go-to-service"><img src="/img/right-arrow.png" alt="FFMC License"></a> </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="environment-laws" role="tabpanel" aria-labelledby="environment-laws-tab">
+                            <div class="inner-tab-panel">
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 mt-36">
+                                        <div class="about-service">
+                                            <div class="d-flex align-items-center">
+                                                <div class="position-relative border-after"> <img src="/img/esi-icon.png" alt="EPR Authorization for E-waste"> </div>
+                                                <h3 class="ms-4">EPR Authorization for E-waste</h3>
+                                            </div>
+                                            <div class="service-content">
+                                                <p>EPR stands for Extended Producers Responsibility, which confers the responsibilities to Producers, importers, manufacturers, and brand owner..</p>
+                                            </div>
+                                            <a href="/epr-authorization-for-e-waste" class="go-to-service"><img src="/img/right-arrow.png" alt="EPR Authorization for E-waste"></a> </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 mt-36">
+                                        <div class="about-service">
+                                            <div class="d-flex align-items-center">
+                                                <div class="position-relative border-after"> <img src="/img/esi-icon.png" alt="EPR Registration"> </div>
+                                                <h3 class="ms-4">EPR Registration</h3>
+                                            </div>
+                                            <div class="service-content">
+                                                <p>Allow cor&rsquo;s Professionals to act on your behalf and secure the EPR registration in one go.</p>
+                                            </div>
+                                            <a href="/epr-registration" class="go-to-service"><img src="/img/right-arrow.png" alt="EPR Registration"></a> </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 mt-36">
+                                        <div class="about-service">
+                                            <div class="d-flex align-items-center">
+                                                <div class="position-relative border-after"> <img src="/img/esi-icon.png" alt="PRO Authorization"> </div>
+                                                <h3 class="ms-4">PRO Authorization</h3>
+                                            </div>
+                                            <div class="service-content">
+                                                <p>Pro authorization is concerned with the management of recycling of Electronic waste. Producers must adhere to the policies established by th..</p>
+                                            </div>
+                                            <a href="/pro-authorization" class="go-to-service"><img src="/img/right-arrow.png" alt="PRO Authorization"></a> </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 mt-36">
+                                        <div class="about-service">
+                                            <div class="d-flex align-items-center">
+                                                <div class="position-relative border-after"> <img src="/img/esi-icon.png" alt="Authorization for Export of E-waste"> </div>
+                                                <h3 class="ms-4">Authorization for Export of E-waste</h3>
+                                            </div>
+                                            <div class="service-content">
+                                                <p>Companies in the business of exportation of e-waste need to obtain authorisation from the concerned authority, i.e., MoEF and SPCB.</p>
+                                            </div>
+                                            <a href="/authorization-for-export-of-e-waste" class="go-to-service"><img src="/img/right-arrow.png" alt="Authorization for Export of E-waste"></a> </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="tax-filings" role="tabpanel" aria-labelledby="tax-filings-tab">
+                            <div class="inner-tab-panel">
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 mt-36">
+                                        <div class="about-service">
+                                            <div class="d-flex align-items-center">
+                                                <div class="position-relative border-after"> <img src="/img/esi-icon.png" alt="Professional Tax Registration"> </div>
+                                                <h3 class="ms-4">Professional Tax Registration</h3>
+                                            </div>
+                                            <div class="service-content">
+                                                <p>cor is a One Stop Destination for all Registration Services. Contact us and get your Profession Tax Registration with ease.</p>
+                                            </div>
+                                            <a href="/professional-tax-registration" class="go-to-service"><img src="/img/right-arrow.png" alt="Professional Tax Registration"></a> </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 mt-36">
+                                        <div class="about-service">
+                                            <div class="d-flex align-items-center">
+                                                <div class="position-relative border-after"> <img src="/img/esi-icon.png" alt="GST Return Filing"> </div>
+                                                <h3 class="ms-4">GST Return Filing</h3>
+                                            </div>
+                                            <div class="service-content">
+                                                <p>Get your GST Return Filing done with cor. Our experts will provide assistance throughout the process.</p>
+                                            </div>
+                                            <a href="/gst-return-filing" class="go-to-service"><img src="/img/right-arrow.png" alt="GST Return Filing"></a> </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 mt-36">
+                                        <div class="about-service">
+                                            <div class="d-flex align-items-center">
+                                                <div class="position-relative border-after"> <img src="/img/esi-icon.png" alt="TDS Return Filing"> </div>
+                                                <h3 class="ms-4">TDS Return Filing</h3>
+                                            </div>
+                                            <div class="service-content">
+                                                <p>Contact cor to get professional assistance in TDS Return Filing</p>
+                                            </div>
+                                            <a href="/tds-return-filing" class="go-to-service"><img src="/img/right-arrow.png" alt="TDS Return Filing"></a> </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 mt-36">
+                                        <div class="about-service">
+                                            <div class="d-flex align-items-center">
+                                                <div class="position-relative border-after"> <img src="/img/esi-icon.png" alt="GST Registration"> </div>
+                                                <h3 class="ms-4">GST Registration</h3>
+                                            </div>
+                                            <div class="service-content">
+                                                <p>The procedure of GST registration is entirely an online process and requires no manual intervention. The process of GST registration is impo..</p>
+                                            </div>
+                                            <a href="/gst-registration" class="go-to-service"><img src="/img/right-arrow.png" alt="GST Registration"></a> </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="trademarks" role="tabpanel" aria-labelledby="trademarks-tab">
+                            <div class="inner-tab-panel">
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 mt-36">
+                                        <div class="about-service">
+                                            <div class="d-flex align-items-center">
+                                                <div class="position-relative border-after"> <img src="/img/esi-icon.png" alt="Copyright Licensing "> </div>
+                                                <h3 class="ms-4">Copyright Licensing </h3>
+                                            </div>
+                                            <div class="service-content">
+                                                <p>At cor, we offer a range of copyright licensing services to help creators and owners of creative works protect their intellectual proper..</p>
+                                            </div>
+                                            <a href="/copyright-licensing" class="go-to-service"><img src="/img/right-arrow.png" alt="Copyright Licensing "></a> </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 mt-36">
+                                        <div class="about-service">
+                                            <div class="d-flex align-items-center">
+                                                <div class="position-relative border-after"> <img src="/img/esi-icon.png" alt="Trademark Hearing"> </div>
+                                                <h3 class="ms-4">Trademark Hearing</h3>
+                                            </div>
+                                            <div class="service-content">
+                                                <p>The trademark hearing is a complicated legal procedure that requires a professional approach. If you want to surpass objections in one go, y..</p>
+                                            </div>
+                                            <a href="/trademark-hearing-procedure-checklist" class="go-to-service"><img src="/img/right-arrow.png" alt="Trademark Hearing"></a> </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 mt-36">
+                                        <div class="about-service">
+                                            <div class="d-flex align-items-center">
+                                                <div class="position-relative border-after"> <img src="/img/esi-icon.png" alt="80G and 12A Registration"> </div>
+                                                <h3 class="ms-4">80G and 12A Registration</h3>
+                                            </div>
+                                            <div class="service-content">
+                                                <p>NGOs must apply for 12A &amp; 80G Certificate to provide income tax exemption to the donors! It also helps NGOs in availing government fundi..</p>
+                                            </div>
+                                            <a href="/80g-and-12a-registration" class="go-to-service"><img src="/img/right-arrow.png" alt="80G and 12A Registration"></a> </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 mt-36">
+                                        <div class="about-service">
+                                            <div class="d-flex align-items-center">
+                                                <div class="position-relative border-after"> <img src="/img/esi-icon.png" alt="Wordmark Registration in India"> </div>
+                                                <h3 class="ms-4">Wordmark Registration in India</h3>
+                                            </div>
+                                            <div class="service-content">
+                                                <p>If you want to get a wordmark registration for your company without any difficulties, then cor is there to help you.</p>
+                                            </div>
+                                            <a href="/wordmark-registration-in-india" class="go-to-service"><img src="/img/right-arrow.png" alt="Wordmark Registration in India"></a> </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> -->
+    <!-- <section id="overview">
+        <div class="container-fluid">
+            <div class="row pt-5">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
+                    <div class="row">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
+                                <div class="inner-overview active-overview mt-50">
+                                    <div><img src="/img/icon-cropiz.png" alt="Why cor?" />
+                                        <h3>Why cor?</h3>
+                                        <p>cor is an AI - driven technology platform which provides legal &amp; financial services through its team of professionals.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
+                                <div class="inner-overview inner-overview1">
+                                    <div><img src="/img/national-top-10.svg" alt="Asia Top 10 Consulting Firms" />
+                                        <h3>Asia Top 10 Consulting Firms</h3>
+                                        <p>cor, is a professional service firm, which provides a range of Government registration besides Taxation services and solutions. Roundly considered as the most prestigious firm of its kind.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
+                                <div class="inner-overview inner-overview1 mt-50">
+                                    <div><img src="/img/client-satisfaction.svg" alt="99.9% Client Satisfaction" />
+                                        <h3>99.9% Client Satisfaction</h3>
+                                        <p>As a professional service firm we are continually striving to improve the service we offer to our client.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
+                                <div class="inner-overview inner-overview1">
+                                    <div><img src="/img/excellent-advisory-service.png" alt="Excellent Advisory Services" />
+                                        <h3>Excellent Advisory Services</h3>
+                                        <p>We are best in rendering consultancy services in the industry through expert professionals associated with us.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
+                    <div class="overview-right">
+                        <h2>Why Choose cor?</h2>
+                        <p>cor is a technology-driven platform which provides professional services in India. We strive to provide the best service to our customers:</p>
+                        <ul class="list-unstyled mt-5">
+                            <li>We respond to each call or mail within a few minutes</li>
+                            <li>We are well-equipped with automation &amp; customer empowerment, which allows you to contact us just with a click.</li>
+                            <li>Retire from stress of registering your establishment because we provide numerous corporate services.</li>
+                            <li>Our experienced team will educate you regarding the project &amp; suggest the premium approach after proper research &amp; inspection.</li>
+                            <li>We have an extensive network in various countries around the globe to provide global certification &amp; approval without any hassle.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> -->
+    <!-- <section id="download-our-app" class="mt-85">
+
+    <!-- <div class="container">
+            <div class="news-letter-form">
+                <div class="row justify-content-between">
+                    <div class="newsletter-heading text-left">
+                        <div>
+                            <h2 class="fw-bold">Newsletter</h2>
+                            <p class="mt-2">Transform your Business. Subscribe our Newsletter.</p>
+                        </div>
+                        <div class="col-xs-12 ms-auto col-sm-12 col-md-12 col-lg-6">
+                            <div class="newsletter-form-right position-relative">
+                                <form action="getSubscribe.php" method="post">
+                                    <input type="email" name="email" class="form-control" placeholder="Enter Your Email" required>
+                                    <input type="hidden" name="subscribe_url" value="index" />
+                                    <input type="submit" name="submit" value="SUBSCRIBE" id="submit">
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>   <div class="container-fluid">
+            <div class="row justify-content-center">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="inner-app-download">
+                        <div class="row justify-content-start">
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 ps-5">
+                                <div class="app-content">
+                                    <h2>cor – Legal Advisory Services</h2>
+                                    <p class="mt-3">cor is a technology driven platform which provides legal & financial services through its team of professionals.</p>
+                                    <div class="get-app">
+                                        <p class="mt-5">Get the App</p>
+                                        <div> <a href="https://play.google.com/store/apps/details?id=com.cor.io" target="_blank"><img src="/img/google-play-store.png" alt="cor App"></a><br>
+                                            <br>
+                                            <a href="https://apps.apple.com/us/app/cor/id6443824313" target="_blank"><img src="/img/app-store.png" alt="cor IOS App"></a> </div>
+                                        <span class="text-white">or</span>
+                                        <div class="mb-3"> <a href="https://play.google.com/store/apps/details?id=com.cor.io" target="_blank"><img src="/img/qr-code.png" alt="cor app QR Code"></a> </div>
+                                        <div class="mb-3"> <a href="https://apps.apple.com/us/app/cor/id6443824313" target="_blank"><img src="/img/ios_qrcode.png" alt="cor IOS App QR Code"></a> </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <img src="/img/our-app.png" class="our-app" alt="cor – Legal Advisory Services"> </div>
+                </div>
+            </div>
+        </div>
+     </section> -->
+       <!-- <p class="rating-text mt-4"><img src="/img/google-rating.png" alt="Rated at 4.9"><span>Rated at <strong>4.9</strong> By <strong>30000 +</strong> Customers Globally</span></p> -->
+       <div class="recommended-services d-flex flex-row">
+        <ul class="list-inline position-relative">
+            <li class="list-inline-item"><a href="/company-registration">Private Limited Registration</a></li>
+            <li class="list-inline-item"><a href="/trademark-assignment">LLP Registration</a></li>
+            <li class="list-inline-item"><a href="/psara-license">Nidhi Registration</a></li>
+            <li class="list-inline-item"><a href="/epr-post-compliance-e-waste">OPC Registration</a></li>
+            <li class="list-inline-item"><a href="/epr-post-compliance-e-waste">NBFC License Registration</a></li>
+            <li class="list-inline-item"><a href="/sitemap">More +</a></li>     
+            <a href="/#lead_form"> <div class="d-block d-sm-none text-white p-3 fw-bold fs-5 nav-wrapper bg-black rounded-3 bg-primary w-100 mt-5 text-center "  style=" top:41px; box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5); ">Apply Now </div> </a>                          
+        </ul>
+
+        <div class=" mt-auto text-center p-4 d-sm-flex d-md-none d-none justify-content-center rounded-4" 
+        style=" box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5); ">
+            <div class=" w-100 px-0 bg-white">
+                <h3 class="mb-5 fw-bold ">Register Now!</h3>
+                <form action="/custom_form.php" class="d-flex justify-content-center "
+                    onsubmit="emailPassage()" method="POST">
+                    <div class="row g-3 justify-content-center ">
+                        <div class="col-lg-12 col-11">
+                            <input class="form-control bg-white  " type="name" name="name" id="name"
+                                title="Please Enter Your Name" placeholder="Your Name" required
+                                style="height: 55px;border: none;border-bottom: 2px solid grey !important;">
+                        </div>
+                        <div class="col-lg-12 col-11">
+                            <input class="form-control bg-white " type="email" name="email" id="email"
+                                placeholder="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required
+                                title="Please Correct Email Id"
+                                style="height: 55px; border: none ;border-bottom: 2px solid grey !important; ">
+                        </div>
+                        <div class="col-lg-12 col-11">
+                            <input class="form-control bg-white " type="tel" name="contact" id="contact"
+                                placeholder="Mobile Number" maxlength="10" pattern="[6-9]{1}[0-9]{9}" title="Please
+                                Enter 10 Digit Number"
+                                style="height: 55px;    border: none; border-bottom: 2px solid grey !important;"
+                                required>
+                        </div>
+                        <input type="hidden" name="body" id="body" value="Check test">
+                        <input type="hidden" name="service_code" value="" id="service-code">
+                        <input type="hidden" name="title" value="accounts-payable-lr">
+                        <input type="hidden" name="redirect" value="/thanks.html">
+                        <input type="hidden" name="analytics" id="analytics1" />
+                        <div class="col-lg-8 col-9 pb-4">
+                            <button class="btn btn-primary w-100 py-3" type="submit">Proceed</button>
+                        </div>
+                    </div>
+                    <script src="/mail/mail.js"></script>
+                </form>
+            </div>
+
+        </div>
+    </div>
+     // window.setTimeout(function () {
+        // (function(w,d,u){
+        //     var s=d.createElement('script');s.async=true;s.src=u+'?'+(Date.now()/60000|0);
+        //     var h=d.getElementsByTagName('script')[0];h.parentNode.insertBefore(s,h);
+        //     })(window,document,'https://cdn.bitrix24.com/b1650591/crm/site_button/loader_12_9mls4m.js');
+        // }, 7000);
+
+</body>
+</html>

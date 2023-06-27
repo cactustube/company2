@@ -1,0 +1,401 @@
+ <!DOCTYPE html>
+ <html lang="en">
+ 
+ <head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     
+     <link rel="canonical" href="/llp-registration-form/">
+     <title>Payment</title>
+     <link rel="shortcut icon" href="https://companyregistrationonline.in/wp-content/uploads/2018/11/Company-registration-Logo.jpg" type="image/x-icon" />
+
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+     integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+     crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+     <!-- Customized Bootstrap Stylesheet -->
+     <link href="/css/bootstrap.min.css" rel="stylesheet">
+
+        <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-KCWCCQ7');</script>
+ </head>
+ <nav class="navbar bg-white p-0 ">
+     <div class="container  ms-0 me-0">
+         
+             <img src="/img/Webp.net-compress-image-21.jpg" alt="Bootstrap" width="297" height="90">
+              </div>
+ </nav>
+ 
+ <body>
+
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KCWCCQ7" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+</noscript>
+ 
+     <div class="container-fluid">
+        
+         <div class=" d-flex flex-md-row flex-column justify-content-around ">
+             <!-- left Container -->
+             <form class="  col-xl-4 col-lg-5 col-md-5 col-sm-6 col-12 mx-lg-0 mx-auto  mb-3 p-3 mb-md-auto mt-3 bg-white border border-2 border-warning   " id="regForm"
+                 action="/application_form.php" method="POST">
+                 <!-- Tabable Content which Change over the Field  -->
+                 <div class="tab">
+                     <div>
+                         <span class="fs-6 text-dark fw-bold pb-3 pb-3">Is your business currently operational?</span>
+                         <div class="input-group mb-3">
+ 
+                             <select class="form-select" name="business-status" id="business-status" required>
+                                 <option value="">Select Bussiness Status</option>
+                                 <option value="Yes">Yes</option>
+                                 <option value="No">No</option>
+                             </select>
+                         </div>
+                     </div>
+                     <div>
+                         <span class="fs-6 text-dark fw-bold pb-3 mb-2">Business Area/Category</span>
+                         <div class="input-group mb-3">
+                             <select class="form-select" name="business-area" id="business-area" required>
+                                 <option value="">Select Bussiness Area</option>
+                                 <option value="Yes">Yes</option>
+                                 <option value="No">No</option>
+                             </select>
+                         </div>
+                     </div>
+                     <div>
+                         <span class="fs-6 text-dark fw-bold pb-3 mb-2">Age of Business</span>
+                         <div class="input-group mb-3">
+                             <select class="form-select" name="bussines-age" id="bussines-age" required>
+                                 <option value="">Select Your Bussiness Age</option>
+                                 <option value="Less than 1-2">Less than 1-2</option>
+                                 <option value="1-2 Years">1-2 Years</option>
+                                 <option value="3-5 Years">3-5 Years</option>
+                                 <option value="5+ Years">5+ Years</option>
+                             </select>
+                         </div>
+                     </div>
+                     <div>
+                         <span class="fs-6 text-dark fw-bold pb-3 mb-2">Number of Employees</span>
+                         <div class="input-group mb-3">
+                             <select class="form-select" name="no-employee" id="no-employee" required>
+                                 <option value="">Select the Number of Employees</option>
+                                 <option value="Less than 20">Less than 20</option>
+                                 <option value="20-50">20-50</option>
+                                 <option value="50-100">50-100</option>
+                                 <option value="100-500">100-500</option>
+                                 <option value="500+">500+</option>
+                             </select>
+                         </div>
+                     </div>
+                 </div>
+                 <div class="tab">
+                     <div>
+                         <span class="fs-6 text-dark fw-bold  mb-2">Name</span>
+                         <p><input class="p-2  border_bottom w-100" type="text" name="name"
+                                 title="Please Enter Your Name" id="name" placeholder="First name..." autocomplete="on" a required></p>
+                     </div>
+                     <div>
+                         <span class="fs-6 text-dark fw-bold mb-2">Email</span>
+                         <p><input class="p-2  border_bottom  w-100" type="email" name="email" id="email"
+                                 pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" autocomplete="on" title="Please Correct Email Id"
+                                 placeholder="Email" required></p>
+                     </div>
+                     <div>
+                         <span class="fs-6 text-dark fw-bold mb-2">Phone</span>
+                         <p><input class="p-2  border_bottom  w-100" type="tel" name="phone" placeholder="Mobile Number"
+                                 id="phone" pattern="[6-9]{1}[0-9]{9}" autocomplete="on" title="Please Enter 10 Digit Number" required></p>
+                     </div>
+                     <input type="hidden" name="cost" id="cost" value="7,499">
+                     <input type="hidden" name="servicecode" id="servicecode" >
+                     <input type="hidden" name="message" id="message" value="llp-registration-form payment">
+                     <input type="hidden" name="info" value="llp-registration-form">
+                     <input type="hidden" name="surl"
+                         value="https://www.fssaifoodlicense.com/online_payment/paymentstatus.php/payu">
+                     <input type="hidden" name="furl"
+                         value="https://www.fssaifoodlicense.com/online_payment/paymentstatus.php/payu">
+                 </div>
+ 
+                 <div class="tab">
+                     <div class="container-fluid">
+                         <div class="payment-price-details my-3 px-3  border-radius">
+                             <div class="styles_priceDetailsSectionNew__JtzkN">
+                                 <p class="fs-5 fw-bold">Price Details</p>
+                                 <hr>
+                                 <div class="d-flex justify-content-between w-100">
+                                     <p>Consultation Fee (GST incl)</p>
+                                     <p class="">₹7,999</p>
+                                 </div>
+                                 <div class="d-flex flex-column w-100  border: 3px outset #d8f1d7; ">
+                                     <div class="d-flex justify-content-between " style="background-color:#d8f1d7;">
+                                         <label class="">
+                                             <span class="fs-6 fw-bold">MAKEININDIA</span> coupon
+                                             <small class=" p-1 fw-bold"
+                                                 style="color: #5bb837; border:1px solid #5bb837; border-radius: 5px;">Applied</small></label>
+                                         <p class="ps-2 py-2 me-0 fw-semibold"> <span>-</span>₹500</p>
+                                     </div>
+                                     <div class="fs-6 fw-semibold" style="background: #d8f1d7;"><img
+                                             src="/img/offer-label.svg" alt="offer label"><small>Coupon expires today</small>
+                                     </div>
+                                 </div>
+                             </div>
+                             <div class="d-flex justify-content-between">
+                                 <p class="fs-5 fw-bold">Total Amount</p>
+                                 <div class="d-flex justify-content-between">
+                                     <p class="text-success fs-5 fw-bolder ">₹7,499</p>
+                                     
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+ 
+ 
+                 <div class="d-flex flex-row gap-2 justify-content-end">
+                     <button class="bg-warning w-25 mb-2 p-2 fs-5 border-1 border-warning" type="button" id="prevBtn"
+                         onclick="nextPrev(-1)">Previous</button>
+                     <button class="bg-warning w-25 mb-2 p-2 fs-5 border-1 border-warning" type="button" id="nextBtn"
+                         onclick="nextPrev(1)">Next</button>
+                 </div>
+                 <div class="text-center mt-3">
+                     <span class="step"></span>
+                     <span class="step"></span>
+                     <span class="step"></span>
+                     <!-- <span class="step"></span> -->
+                 </div>
+ 
+                 <script src="/mail/mail.js"></script>
+             </form>
+             <script>
+                 // FUNCTION FOR URL BREKDOWN FOR DIFFERENT PARAMETER
+                  var check = window.location.href;
+                     function urlbreaker(url){
+                     // storing the Parameter
+                     urlBeaker = new Array();
+                     // Getting value
+                     this.urlparam = function(x){
+                         return urlBeaker[x];
+                     }
+ 
+                     param = url.substring(url.indexOf('?')+1);
+                     param_items = param.split('&');
+                     for (i=0;i<param_items.length;i++){
+                         s= param_items[i].split("=");
+                         urlBeaker[s[0]]=s[1];
+                        
+                     }
+                  }
+                  var y = new urlbreaker(check); 
+                  // TAKING VALUE FOR THE USER  
+                  document.getElementById("name").value         = y.urlparam('name');
+                  document.getElementById("email").value        = y.urlparam('email');
+                  document.getElementById("phone").value        = y.urlparam('phone');
+                  document.getElementById("servicecode").value  = y.urlparam('servicecode');
+ 
+                 
+                 var currentTab = 0; // Current tab is set to be the first tab (0)
+                 showTab(currentTab); // Display the current tab
+ 
+                 function showTab(n) {
+                     // This function will display the specified tab of the form...
+                     var x = document.getElementsByClassName("tab");
+ 
+                     x[n].style.display = "block";
+                     //... and fix the Previous/Next buttons:
+                     if (n == 0) {
+                         document.getElementById("prevBtn").style.display = "none";
+                     } else {
+                         document.getElementById("prevBtn").style.display = "inline";
+                     }
+                     if (n == (x.length - 1)) {
+                         document.getElementById("nextBtn").innerHTML = "Pay Now";
+                     } else {
+                         document.getElementById("nextBtn").innerHTML = "Next";
+                     }
+ 
+                     //... and run a function that will display the correct step indicator:
+                 }
+ 
+                 function nextPrev(n) {
+                     // This function will figure out which tab to display
+                     var x = document.getElementsByClassName("tab");
+                     console.log("Clicked");
+ 
+ 
+                     // Exit the function if any field in the current tab is invalid:
+ 
+ 
+                     if (n == 1 && !validateForm()) return false;
+                     // Hide the current tab:
+                     x[currentTab].style.display = "none";
+ 
+                     // Increase or decrease the current tab by 1:
+                     currentTab = currentTab + n;
+                     if (currentTab > (x.length - 1)) {
+                         console.log("display Check")
+                         x[currentTab - 1].style.display = "block";
+                     }
+                     // if you have reached the end of the form...
+                     if (currentTab >= (x.length)) {
+                         // ... the form gets submitted:
+                         document.getElementById("regForm").submit();
+ 
+                         return sendEmail();
+                     }
+                     // Otherwise, display the correct tab:
+                     showTab(currentTab);
+                 }
+ 
+                 function validateForm() {
+                     // This function deals with validation of the form fields
+                     var x, y, i, valid = true;
+                     x = document.getElementsByClassName("tab");
+                     y = x[currentTab].getElementsByTagName("input");
+                     z = x[currentTab].getElementsByTagName('select');
+                     // A loop that checks every input field in the current tab:
+                     for (i = 0; i < y.length; i++) {
+                         // If a field is empty...
+                         if (y[i].value == "") {
+                             // add an "invalid" class to the field:
+                             y[i].className += " invalid";
+                             // and set the current valid status to false
+                             valid = false;
+                         }
+                     }
+                     for (i = 0; i < z.length; i++) {
+                         if (z[i].value == "") {
+                             z[i].className += " invalid";
+                             valid = false;
+                         } else {
+                             z[i].className -= " invalid";
+                             z[i].className += " form-select valid"
+                         }
+ 
+                     }
+                     // If the valid status is true, mark the step as finished and valid:
+                     if (valid) {
+                         document.getElementsByClassName("step")[currentTab].className += " finish";
+                     }
+                     return valid; // return the valid status
+                 }
+             </script>
+             <!-- Right Container -->
+             <div class="  col-xl-4 col-lg-5 col-12 col-sm-6  mx-lg-0  mx-auto  col-12 mb-auto bg-white p-2 ">
+                 <div class="container-fluid bg-white border border-warning border-2">
+                     <div class="col-12 text-center">
+                         <p class="fs-4 fw-bold text-dark text-capitalize">
+                            limited liability partnership </p>
+                     </div>
+                     <div class="d-flex flex-column justify-content-center text-center">
+                         <p class="fw-bold text-dark" style="font-size:1.12rem">Package Include </p>
+                         
+                         <div class="container-fluid ">
+                                <div class="d-flex justify-content-around flex-wrap m-auto">
+                                    <div>
+                                        <div class="d-flex flex-column  mx-1 p-1 text-center my-1" 
+                                            style="border:2px outset #061429;width:8rem ;height:7rem ">
+                                            <i class="fa fa-fast-backward display-5 " style="color: #091E3E; ;height:3.5rem"></i>
+                                            <span class="fw-bold  text-wrap small " style="color: #091E3E;">Fast & Quick Process </span>
+                                        </div>
+                                        <div class="d-flex flex-column  mx-1 p-1 text-center my-1 icon_box_one"
+                                            style="border:2px outset #061429;width:8rem  ;height:7rem">
+                                            <i class="fa fa-users-rectangle display-5 " style="color: #091E3E; ;height:3.5rem "></i>
+                                            <span class="fw-bold   text-wrap small " style="color: #091E3E;">Free Consultations </span>
+                                        </div>
+                                       
+                                        
+                                    </div>
+                                    <div>
+                                        <div class="d-flex flex-column mx-1 p-1 text-center my-1 icon_box_one"
+                                            style="border:2px outset #061429;width:8rem  ;height:7rem">
+                                            <i class="fa fa-money-bill-trend-up display-5  " style="color: #091E3E; ;height:3.5rem"></i>
+                                            <span class="fw-bold  text-wrap small" style="color: #091E3E;">Lowest Price </span>
+                                        </div>
+                                        <div class="d-flex flex-column mx-1 p-1 text-center my-1 icon_box_one"
+                                            style="border:2px outset #061429;width:8rem  ;height:7rem">
+                                            <i class="fa fa-drivers-license display-5 " style="color: #091E3E; ;height:3.5rem"></i>
+                                            <span class="fw-bold word-wrap text-wrap small " style="color: #091E3E;">Qualified Team</span>
+                                        </div>
+                                       
+                                    </div>
+                                </div>
+                            </div>
+                        
+                        <div class="text-center">
+                            <p class="fw-bold  text-dark mt-2 fs-5">Advantages</p>
+                            <ul class="text-start">
+                                <li> International credibility</li>
+                                <li> Customer satisfaction</li>
+                                <li> Government tenders</li>
+                                <li> Business efficiency</li>
+                                <li> Product quality</li>
+
+                               
+                            </ul>
+                        </div>
+                     </div>
+                 </div>
+             </div>
+         </div>
+     </div>
+     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+     <style>
+         input.invalid {
+             background-color: #ffdddd;
+         }
+ 
+         select.invalid {
+             background-color: #ffdddd;
+         }
+ 
+         select.valid {
+             background-color: #e0ffdd;
+         }
+ 
+         .tab {
+             display: none;
+         }
+ 
+         .step {
+             height: 15px;
+             width: 15px;
+             margin: 0 2px;
+             background-color: #bbbbbb;
+             border: none;
+             border-radius: 50%;
+             display: inline-block;
+             opacity: 0.5;
+         }
+ 
+         .step.active {
+             opacity: 1;
+         }
+ 
+ 
+         .step.finish {
+             background-color: #12ef33;
+         }
+ 
+         .form-select {
+             border: none;
+             border-bottom: 1px solid;
+         }
+ 
+         .border_bottom {
+             border: none;
+             border-bottom: 1px solid;
+         }
+ 
+         body {
+             height: max-content;
+             background: url(/img/payment.jpg) no-repeat;
+             background-size: cover;
+             background-repeat: no-repeat;
+ 
+         }
+     </style>
+ </body>
+ 
+ 
+ </html>
