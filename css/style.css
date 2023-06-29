@@ -4837,10 +4837,10 @@ fieldset:disabled .btn {
     background-color: #e7f1ff;
     box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.125);
 }
-
+/* 
 .accordion-button:not(.collapsed)::after {
     background-image: url(../img/yellow-arrow.png);
-}
+} */
 
 .accordion-button::after {
     flex-shrink: 0;
